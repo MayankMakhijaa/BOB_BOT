@@ -34,19 +34,20 @@ class BOBWhatsappBot:
     is_function_calling = 0
 
     def __init__(self,message):
-        self.API_KEY = os.getenv("AZURE_OPENAI_API_KEY")
-        self.RESOURCE_ENDPOINT = os.getenv("AZURE_OPENAI_ENDPOINT")
+        self.API_KEY = "e84082c75d8143fd834877a5844c3441"
+        self.RESOURCE_ENDPOINT = "https://bobaoai.openai.azure.com/"
         self.client = AzureChatOpenAI(api_key=self.API_KEY, api_version="2023-07-01-preview",
                                       azure_endpoint=self.RESOURCE_ENDPOINT, azure_deployment="BoBGPT4o" )
-        self.Completion_Model = os.getenv("AZURE_OPENAI_COMPLETION_MODEL")
+        self.Completion_Model = "BoBGPT4o"
         # print(self.Completion_Model)
         self.folder_path = 'Prompts'
         self.session_id = ""
         self.message = message
-        self.AZURE_COGNITIVE_SEARCH_ENDPOINT = os.getenv("AZURE_COGNITIVE_SEARCH_ENDPOINT")
-        self.AZURE_COGNITIVE_SEARCH_API_KEY = os.getenv("AZURE_COGNITIVE_SEARCH_API_KEY")
-        self.AZURE_COGNITIVE_SEARCH_INDEX_NAME = os.getenv("AZURE_COGNITIVE_SEARCH_INDEX_NAME")
+        self.AZURE_COGNITIVE_SEARCH_ENDPOINT = "https://bobaisearch.search.windows.net"
+        self.AZURE_COGNITIVE_SEARCH_API_KEY = "yCO8qx3dLcr75IYTumFosbZXhdetPfH13f3c3xRG02AzSeBYx3OU"
+        self.AZURE_COGNITIVE_SEARCH_INDEX_NAME = "bob_index_0"
         self.ENCODING = "cl100k_base"
+        
         self.search_client = SearchClient(endpoint=self.AZURE_COGNITIVE_SEARCH_ENDPOINT,
                                           index_name=self.AZURE_COGNITIVE_SEARCH_INDEX_NAME,
                                           credential=AzureKeyCredential(self.AZURE_COGNITIVE_SEARCH_API_KEY))
